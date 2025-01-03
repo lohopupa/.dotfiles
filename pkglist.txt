@@ -1,0 +1,12 @@
+neovim
+zsh
+btop
+visual-studio-code-bin
+fzf
+tmux
+pkgfile
+stow
+tree
+grc
+docker
+go
