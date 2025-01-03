@@ -1,0 +1,22 @@
+[user]
+	email = lohopupa@gmail.com
+	name = Lohopupa
+
+[alias]
+    co = checkout
+    drop = !git add . && git reset --hard HEAD
+    
+    c = commit
+    s = status
+    l = log
+    br = branch
+    pl = pull
+    ps = push
+    f = fetch
+    cl = clone
+    ss = stash
+    sp = stash pop
+    sd = stash drop
+
+[init]
+    defaultBranch = main
