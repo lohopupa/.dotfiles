@@ -1,28 +1,49 @@
-## README
 
-# Dotfiles Repository
+# Dotfiles Repository  
 
-This repository contains my personal configuration files managed using [stow](https://www.gnu.org/software/stow/).
+This repository contains my personal configuration files managed using [stow](https://www.gnu.org/software/stow/).  
 
-### Structure
+---
 
-Each directory represents a specific configuration (e.g., `zsh`, `vim`, `tmux`) and contains the relevant dotfiles. The directory structure aligns with `$HOME`, making it easy to symlink with `stow`.
+## Post-Installation Steps  
 
-### Usage
+After a fresh installation, follow this guide to set up NVIDIA drivers on Arch Linux:  
+[Arch NVIDIA Drivers Installation Guide](https://github.com/korvahannu/arch-nvidia-drivers-installation-guide)  
 
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/dotfiles.git ~/.dotfiles
-```
-2. Navigate to the repository:
-```bash
-cd ~/.dotfiles
-```
-3. Use `stow` to symlink the desired configuration:
-```bash
-stow .
-```
+---
 
-### License
+## Stow Usage  
 
-Use these dotfiles however the fuck you want.
+1. **Clone the repository**:  
+   ```bash
+   git clone https://github.com/yourusername/dotfiles.git ~/.dotfiles
+   ```  
+2. **Navigate to the repository**:  
+   ```bash
+   cd ~/.dotfiles
+   ```  
+3. **Symlink configurations**:  
+   ```bash
+   stow .
+   ```  
+
+---
+
+## Managing VSCode Extensions  
+
+- **Install extensions**:  
+  ```bash
+  code-install-exts
+  ```  
+- **Update extensions list**:  
+  ```bash
+  code-update-list-exts
+  ```  
+
+---
+
+## License  
+
+Use these dotfiles however the fuck you want.  
+
+---
