@@ -6,12 +6,12 @@ CONFIG_TEMPLATE="Host selectel
   IdentityFile ~/.ssh/selectel/selectel
 "
 
-is_valid_ip() {
+is-valid-ip() {
     [[ $1 =~ ^([0-9]{1,3}\.){3}[0-9]{1,3}$ ]] && return 0
     return 1
 }
 
-update_selectel_host() {
+update-selectel-host() {
   if is_valid_ip "$1"; then
     printf $CONFIG_TEMPLATE $1 > $SELECTEL_SSH_CONFIG_FILE
   else
