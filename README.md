@@ -1,18 +1,20 @@
 
+## README
+
 # Dotfiles Repository  
 
-This repository contains my personal configuration files managed using [stow](https://www.gnu.org/software/stow/).  
+This repository contains my personal configuration files managed using [stow](https://www.gnu.org/software/stow/).
 
 ---
 
-## Post-Installation Steps  
+### Post-Installation Steps  
 
 After a fresh installation, follow this guide to set up NVIDIA drivers on Arch Linux:  
-[Arch NVIDIA Drivers Installation Guide](https://github.com/korvahannu/arch-nvidia-drivers-installation-guide)  
+[Arch NVIDIA Drivers Installation Guide](https://github.com/korvahannu/arch-nvidia-drivers-installation-guide)
 
 ---
 
-## Stow Usage  
+### Stow Usage  
 
 1. **Clone the repository**:  
    ```bash
@@ -29,7 +31,22 @@ After a fresh installation, follow this guide to set up NVIDIA drivers on Arch L
 
 ---
 
-## Managing VSCode Extensions  
+### Running Setup Script
+
+To quickly set up your environment, run the following command to download and execute the `setup.sh` script:  
+
+```bash
+curl -s https://raw.githubusercontent.com/lohopupa/.dotfiles/refs/heads/main/setup.sh | sh
+```
+
+This will:
+- Install necessary packages.
+- Clone and apply dotfiles using `stow`.
+- Install **Oh My Zsh** if it isn't already installed.
+
+---
+
+### Managing VSCode Extensions  
 
 - **Install extensions**:  
   ```bash
@@ -42,8 +59,8 @@ After a fresh installation, follow this guide to set up NVIDIA drivers on Arch L
 
 ---
 
-## License  
+### License  
 
-Use these dotfiles however the fuck you want.  
+Use these dotfiles however the fuck you want.
 
 ---
