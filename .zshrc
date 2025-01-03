@@ -11,8 +11,11 @@ plugins=(zsh-syntax-highlighting zsh-autosuggestions zsh-completions)
 
 # Sourcing Scripts
 source $ZSH/oh-my-zsh.sh
-source ~/scripts/hcd.sh
-source ~/scripts/selectel.sh
+
+for script in ~/scripts/*.sh; do
+  source "$script"
+done
+
 bg[blue]='\e[48;2;20;157;252m'
 source ~/.grc.zsh
 
