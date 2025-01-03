@@ -1,0 +1,70 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "F8",
+        "command": "runCommands",
+        "when": "editorFocus",
+        "args": {
+          "commands": ["editor.action.marker.next", "closeMarkersNavigation"]
+        }
+      },
+      {
+        "key": "ctrl+alt+right",
+        "command": "-workbench.action.moveEditorToNextGroup"
+      },
+      {
+        "key": "ctrl+right ctrl+right",
+        "command": "quickInput.acceptInBackground",
+        "when": "cursorAtEndOfQuickInputBox && inQuickInput && quickInputType == 'quickPick' || inQuickInput && !inputFocus && quickInputType == 'quickPick'"
+      },
+      {
+        "key": "ctrl+alt+right",
+        "command": "-quickInput.acceptInBackground",
+        "when": "cursorAtEndOfQuickInputBox && inQuickInput && quickInputType == 'quickPick' || inQuickInput && !inputFocus && quickInputType == 'quickPick'"
+      },
+      {
+        "key": "ctrl+alt+right",
+        "command": "editor.action.smartSelect.expand",
+        "when": "editorTextFocus"
+      },
+      {
+        "key": "shift+alt+right",
+        "command": "-editor.action.smartSelect.expand",
+        "when": "editorTextFocus"
+      },
+      {
+        "key": "ctrl+alt+left",
+        "command": "editor.action.smartSelect.shrink",
+        "when": "editorTextFocus"
+      },
+      {
+        "key": "shift+alt+left",
+        "command": "-editor.action.smartSelect.shrink",
+        "when": "editorTextFocus"
+      },
+      {
+        "key": "ctrl+alt+j",
+        "command": "-liveshare.join",
+        "when": "liveshare:state != 'Joined' && liveshare:state != 'Shared'"
+      },
+      {
+        "key": "shift+alt+left",
+        "command": "workbench.action.increaseViewWidth",
+      },
+      {
+        "key": "shift+alt+right",
+        "command": "workbench.action.decreaseViewWidth",
+      },
+      {
+        "key": "shift+alt+down",
+        "command": "workbench.action.increaseViewHeight",
+      },
+      {
+        "key": "shift+alt+up",
+        "command": "workbench.action.decreaseViewHeight",
+      },
+      {
+        "key": "ctrl+shift+i",
+        "command": "extension.goGroupImports"
+      }
+]
