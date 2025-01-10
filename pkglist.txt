@@ -1,3 +1,6 @@
+wezterm
+telegram-desktop
+google-chrome
 neovim
 zsh
 btop
