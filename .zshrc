@@ -1,36 +1,41 @@
+# ========================
 # Basic Configuration
+# ========================
 export ZSH="$HOME/.oh-my-zsh"
 export EDITOR=nvim
 ZSH_THEME="agnoster"
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
-# ZSH Update Mode
+# ========================
+# Oh-My-Zsh Configuration
+# ========================
 zstyle ':omz:update' mode auto
-
-# Plugins
 plugins=(zsh-syntax-highlighting zsh-autosuggestions zsh-completions)
-
-# Sourcing Scripts
 source $ZSH/oh-my-zsh.sh
 
+# ========================
+# External Scripts
+# ========================
 for script in ~/scripts/*.sh; do
   source "$script"
 done
-
-bg[blue]='\e[48;2;20;157;252m'
 source ~/.grc.zsh
 
-
+# ========================
 # Aliases
+# ========================
 alias ccat="/usr/bin/cat"
 alias sl=ls
 alias aeza="ssh aeza"
 alias get='wget $(xclip -o)'
-alias rz='source ~/.zshrc'
-
+alias rz='source ~/.zshrc && echo ".zsrc reloaded"'
 alias md='mkdir -p'
 alias ff='find . -type f -iname'
 
-NA_TOOLS=""
+# ========================
+# Missing Tools Checker
+# ========================
+NA_TOOLS=()
 
 create_alias_if_exists() {
   local cmd=$1
@@ -68,10 +73,11 @@ create_alias_if_exists "rg" "grep" "rg --color=auto"
 
 check_missing_tools
 
+# ========================
+# Functions
+# ========================
 rcode() {
-  local entity
-  entity="folder"
-  
+  local entity="folder"
   while getopts "f" opt; do
     case $opt in
       f) entity="file" ;;
@@ -89,7 +95,9 @@ mdc() {
   mkdir $1 && cd $1
 }
 
-# Custom Prompt Function
+# ========================
+# Prompt Customization
+# ========================
 prompt_dir() {
   local path_length=50
   local short_path
@@ -108,6 +116,3 @@ precmd() {
     PROMPT="%{$fg[blue]%}[$screen_title]%{$reset_color%} $PROMPT"
   fi
 }
-
-
-export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH

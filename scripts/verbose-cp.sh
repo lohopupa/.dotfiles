@@ -11,7 +11,7 @@ cpv() {
         copied_files=$(find "$dst" -type f | wc -l)
         percent=$((copied_files * 100 / total_files))
         echo -ne "\rProgress: [$(printf '%0.s#' $(seq 1 $((percent / 2))))$(printf '%0.s ' $(seq 1 $((50 - percent / 2))))] $percent%"
-        sleep 0.5
+        sleep 0.1
     done
 
     wait # Wait for the copy process to complete
