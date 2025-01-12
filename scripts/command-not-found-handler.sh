@@ -3,8 +3,8 @@ command_not_found_handler() {
     local args="${(@)argv[2,-1]}"  # Capture arguments passed to the command
     echo -e "\033[31mCommand '$cmd' not found.\033[0m"  # Red text for "not found"
 
-    # Search for the package using pkgfile
-    local suggestions=($(pkgfile "${cmd}"))
+    # Search for the package using pkgfile (only find relevant packages for the command)
+    local suggestions=($(pkgfile "$cmd"))
     
     if (( ${#suggestions[@]} == 1 )); then
         # Only one package found
@@ -15,24 +15,34 @@ command_not_found_handler() {
 
         if [[ $answer == "y" || $answer == "Y" ]]; then
             yay -S "${suggestions[1]}"
-            eval "$cmd $args"
         else
             echo -e "\033[31mPackage not installed.\033[0m"  # Red text for "not installed"
         fi
     elif (( ${#suggestions[@]} > 1 )); then
         # Multiple packages found
         echo -e "\033[33mThe command '$cmd' is provided by multiple packages:\033[0m"
-        for i in ${(k)suggestions}; do
-            echo -e "\033[34m[$i]\033[0m ${suggestions[$i]}"  # Blue text for package index
+        local index=1
+        local valid_suggestions=()
+        for suggestion in "${suggestions[@]}"; do
+            # Filter only relevant suggestions (for the actual command, not extras like bash-completion)
+            if [[ $suggestion == *"$cmd"* ]]; then
+                valid_suggestions+=("$suggestion")
+                echo -e "\033[34m[$index]\033[0m $suggestion"  # Blue text for package index
+                ((index++))
+            fi
         done
-        echo -en "\033[36mEnter the number of the package you want to install: \033[0m"
-        read -r choice
 
-        if [[ $choice -gt 0 && $choice -le ${#suggestions[@]} ]]; then
-            yay -S "${suggestions[$choice]}"
-            eval "$cmd $args"
+        if [[ ${#valid_suggestions[@]} -gt 0 ]]; then
+            echo -en "\033[36mEnter the number of the package you want to install: \033[0m"
+            read -r choice
+
+            if [[ $choice -gt 0 && $choice -le ${#valid_suggestions[@]} ]]; then
+                yay -S "${valid_suggestions[$((choice - 1))]}"
+            else
+                echo -e "\033[31mInvalid selection. Package not installed.\033[0m"
+            fi
         else
-            echo -e "\033[31mInvalid selection. Package not installed.\033[0m"
+            echo -e "\033[31mNo valid packages found.\033[0m"
         fi
     else
         # No packages found; search for closest match among installed commands
