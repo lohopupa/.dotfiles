@@ -87,13 +87,18 @@ rcode() {
   echo "select value from ItemTable where key like '%recent%';" | 
     sqlite3 ~/.config/Code/User/globalStorage/state.vscdb | 
     jq ".entries[] | select(.${entity}Uri != null) | .${entity}Uri" |
-    fzf | 
-    xargs -I {} code --${entity}-uri {}
+    fzf | xargs -I {} code --${entity}-uri {}
 }
 
 mdc() {
   mkdir $1 && cd $1
 }
+
+scr() {
+  session=$(screen -ls | awk '/\t/ {print $1}' | cut -d '.' -f 2 | fzf --print-query | tail -n 1)
+  [ -n "$session" ] && screen -R "$session"
+}
+
 
 # ========================
 # Prompt Customization
@@ -111,7 +116,7 @@ prompt_dir() {
 
 # Pre-command Hook
 precmd() {
-  screen_title="s"
+  screen_title="${STY##*.}"
   if [[ -n "$STY" && "$PROMPT" != *"[$screen_title]"* ]]; then
     PROMPT="%{$fg[blue]%}[$screen_title]%{$reset_color%} $PROMPT"
   fi
