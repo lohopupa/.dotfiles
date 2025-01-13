@@ -52,6 +52,6 @@ fi
 # Apply dotfiles using stow
 echo "Applying dotfiles..."
 cd ~/.dotfiles
-stow .
+stow --override .
 
 echo "Setup complete!"
