@@ -95,7 +95,7 @@ mdc() {
 }
 
 scr() {
-  session=$(screen -ls | awk '/\t/ {print $1}' | cut -d '.' -f 2 | fzf --print-query | tail -n 1)
+  session=$(screen -ls | awk '/\t/ {print $1}' | cut -d '.' -f 2 | fzf --print-query -q "$1" | tail -n 1)
   [ -n "$session" ] && screen -R "$session"
 }
 

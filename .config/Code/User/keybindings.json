@@ -36,5 +36,18 @@
   {
     "key": "shift+alt+down",
     "command": "workbench.action.increaseViewHeight",
+  },
+  // {
+  //   "key": "ctrl+enter",
+  //   "command": "workbench.action.tasks.runTask",
+  //   "args": "echo"
+  // }
+  {
+    "key": "ctrl+alt+o",
+    "command": "workbench.action.terminal.sendSequence",
+    "args": {
+      "text": "code ${selectedText}\u000D"
+    },
+    "when": "editorTextFocus && editorHasSelection"
   }
 ]
