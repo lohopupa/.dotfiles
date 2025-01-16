@@ -31,7 +31,7 @@ alias get='wget $(xclip -o)'
 alias rz='source ~/.zshrc && echo ".zsrc reloaded"'
 alias md='mkdir -p'
 alias ff='find . -type f -iname'
-
+alias ubuntu='docker run -it --rm ubuntu bash'
 # ========================
 # Missing Tools Checker
 # ========================

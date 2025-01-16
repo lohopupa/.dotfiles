@@ -7,11 +7,10 @@
     "editor.fontLigatures": true,
     "workbench.startupEditor": "none",
     "problems.showCurrentInStatus": true,
-    "editor.lineNumbers": "relative",
+    "editor.lineNumbers": "on",
     "editor.minimap.enabled": false,
     "editor.cursorBlinking": "phase",
     "editor.cursorSmoothCaretAnimation": "explicit",
-    "editor.stickyScroll.enabled": false,
     "editor.tabCompletion": "on",
     "workbench.editor.pinnedTabSizing": "compact",
     "workbench.editor.tabSizing": "shrink",
@@ -53,5 +52,7 @@
     "terminal.integrated.fontLigatures": true,
     "groupImports.onSave": false,
     "find-it-faster.general.useTerminalInEditor": false,
-    "workbench.colorTheme": "GitHub Dark"
+    "workbench.colorTheme": "GitHub Dark",
+    "workbench.editor.editorActionsLocation": "hidden",
+    "problems.autoReveal": false,
 }
