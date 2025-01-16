@@ -31,7 +31,26 @@ alias get='wget $(xclip -o)'
 alias rz='source ~/.zshrc && echo ".zsrc reloaded"'
 alias md='mkdir -p'
 alias ff='find . -type f -iname'
-alias ubuntu='docker run -it --rm ubuntu bash'
+
+# ========================
+# Ubuntu lab
+# ========================
+
+alias ubuntu='docker exec -it ubuntu-lab zsh'
+
+reload-ubuntu(){
+  docker kill ubuntu-lab
+  docker rm ubuntu-lab
+  docker run --restart always -d --name ubuntu-lab ubuntu-lab tail -f /dev/null
+}
+
+restart-ubuntu(){
+  docker kill ubuntu-lab
+  docker rm ubuntu-lab
+  cd ~/.ubuntu
+  docker build -t ubuntu-lab .
+  docker run --restart always -d --name ubuntu-lab ubuntu-lab tail -f /dev/null
+}
 # ========================
 # Missing Tools Checker
 # ========================
