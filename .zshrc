@@ -24,7 +24,7 @@ source ~/.grc.zsh
 # ========================
 # Aliases
 # ========================
-alias ccat="/usr/bin/cat"
+alias kat="/usr/bin/cat"
 alias sl=ls
 alias aeza="ssh aeza"
 alias get='wget $(xclip -o)'
