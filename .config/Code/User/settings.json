@@ -52,7 +52,10 @@
     "terminal.integrated.fontLigatures": true,
     "groupImports.onSave": false,
     "find-it-faster.general.useTerminalInEditor": false,
-    "workbench.colorTheme": "GitHub Dark",
+    "workbench.colorTheme": "Ayu Mirage Bordered",
     "workbench.editor.editorActionsLocation": "hidden",
     "problems.autoReveal": false,
+    "terminal.integrated.gpuAcceleration": "off",
+    "Notes.notesLocation": "/home/lohopupa/.notes",
+    "workbench.editor.empty.hint": "hidden",
 }
