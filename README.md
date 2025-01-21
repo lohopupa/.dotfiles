@@ -59,7 +59,7 @@ This will:
 
 ---
 
-### License  
+### License
 
 Use these dotfiles however the fuck you want.
 

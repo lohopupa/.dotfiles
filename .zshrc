@@ -31,7 +31,7 @@ alias get='wget $(xclip -o)'
 alias rz='source ~/.zshrc && echo ".zsrc reloaded"'
 alias md='mkdir -p'
 alias ff='find . -type f -iname'
-
+alias grepv='grep -Pn --vimgrep'
 # ========================
 # Ubuntu lab
 # ========================
@@ -95,6 +95,7 @@ check_missing_tools
 # ========================
 # Functions
 # ========================
+
 rcode() {
   local entity="folder"
   while getopts "f" opt; do
