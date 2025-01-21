@@ -15,7 +15,7 @@
     "key": "ctrl+alt+right",
     "command": "editor.action.smartSelect.expand",
     "when": "editorTextFocus"
-  },  
+  },
   {
     "key": "ctrl+alt+left",
     "command": "editor.action.smartSelect.shrink",
@@ -37,11 +37,28 @@
     "key": "shift+alt+down",
     "command": "workbench.action.increaseViewHeight",
   },
-  // {
-  //   "key": "ctrl+enter",
-  //   "command": "workbench.action.tasks.runTask",
-  //   "args": "echo"
-  // }
+  {
+    "key": "ctrl+alt+k",
+    "command": "bookmarks.toggle",
+  },
+  {
+    "key": "ctrl+up",
+    "command": "cursorMove",
+    "args": {
+      "to": "up",
+      "by": "line",
+      "value": 10
+    }
+  },
+  {
+    "key": "ctrl+down",
+    "command": "cursorMove",
+    "args": {
+      "to": "down",
+      "by": "line",
+      "value": 10
+    }
+  },
   {
     "key": "ctrl+alt+o",
     "command": "workbench.action.terminal.sendSequence",
