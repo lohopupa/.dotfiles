@@ -14,9 +14,9 @@ cmd() {
         selected_name=$(_select_command_with_fzf) || return
       else
         selected_name="$1"
+        shift
       fi
-      shift
-      _cmdrun "$selected_name" $@
+      _cmdrun "$selected_name" "$@"
       ;;
     add)
       shift
@@ -36,7 +36,7 @@ cmd() {
       ;;
     ls)
       shift
-      _cmdls "$1"
+      _cmdls "$@"
       ;;
     cp | copy)
       shift
@@ -71,7 +71,7 @@ _cmdhelp(){
     echo "  add <name> \"<cmd>\" Add a new command or update an existing one."
     echo "  rm <name>          Remove the command with the given name in the current directory."
     echo "  clear              Remove all commands for the current directory."
-    echo "  ls [filter]        List all commands in the current directory, optionally filtered by name."
+    echo "  ls [-a|-f[filter]] List all commands in the current directory, optionally filtered by name."
     echo "  cp <source_dir> [name]   Copy all commands from <source_dir> to the current directory, or copy the specific command <name>."
     echo "  help               Show this help message."
     echo
@@ -117,15 +117,32 @@ _cmdrm() {
 }
 
 _cmdls() {
-  local filter="$1"
+  local option="$1"
+  local query
   local pwd="$(pwd)"
 
-  if [[ -z "$filter" ]]; then
-    sqlite3 "$CMD_RUNNER_DATA" "SELECT name, command FROM commands WHERE pwd = '$pwd';"
-  else
-    sqlite3 "$CMD_RUNNER_DATA" "SELECT name, command FROM commands WHERE pwd = '$pwd' AND name LIKE '%$filter%';"
-  fi
+  case "$option" in
+    -a)
+      # Show all commands with paths
+      query="SELECT pwd, name, command FROM commands;"
+      ;;
+    -f)
+      shift
+      local filter="$1"
+      if [[ -n "$filter" ]]; then
+        query="SELECT name, command FROM commands WHERE pwd = '$pwd' AND name LIKE '%$filter%';"
+      fi
+      ;;
+    *)
+      query="SELECT name, command FROM commands WHERE pwd = '$pwd';"
+      ;;
+  esac
+
+  sqlite3 "$CMD_RUNNER_DATA" "$query" | tr "|" "\t\t"
+
 }
+
+
 
 _cmdcp() {
   local source_dir="$1"
@@ -175,7 +192,7 @@ _select_command_with_fzf() {
   
   # Fetch all commands for the current directory
   local commands
-  commands=$(sqlite3 "$CMD_RUNNER_DATA" "SELECT name || ' : ' || command FROM commands WHERE pwd = '$pwd';")
+  commands=$(sqlite3 "$CMD_RUNNER_DATA" "SELECT name || ': ' || command FROM commands WHERE pwd = '$pwd';")
 
   if [[ -z "$commands" ]]; then
     echo "No commands found for the current directory."
@@ -184,7 +201,7 @@ _select_command_with_fzf() {
 
   # Use fzf to select a command
   local selected
-  selected=$(echo "$commands" | fzf --prompt="Select a command to run: ")
+  selected=$(echo "$commands" | fzf-tmux --prompt="Select a command to run: ")
 
   if [[ -z "$selected" ]]; then
     echo "No command selected."
@@ -192,6 +209,6 @@ _select_command_with_fzf() {
   fi
 
   # Extract the name (before the colon) and return it
-  echo "$selected" | cut -d' ' -f1
+  echo "$selected" | cut -d':' -f1
   return 0
 }
