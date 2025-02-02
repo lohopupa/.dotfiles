@@ -20,3 +20,9 @@
 
 [init]
     defaultBranch = main
+[http "https://gitlab.pararamx.ru"]
+	proxy = socks5h://localhost:8089
+[https "https://gitlab.pararamx.ru"]
+	proxy = socks5h://localhost:8089
+[credential]
+	helper = store

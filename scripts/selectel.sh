@@ -12,7 +12,7 @@ is-valid-ip() {
 }
 
 update-selectel-host() {
-  if is_valid_ip "$1"; then
+  if is-valid-ip "$1"; then
     printf $CONFIG_TEMPLATE $1 > $SELECTEL_SSH_CONFIG_FILE
   else
       echo "Invalid IP address: $1"

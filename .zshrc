@@ -14,6 +14,14 @@ plugins=(zsh-syntax-highlighting zsh-autosuggestions zsh-completions)
 source $ZSH/oh-my-zsh.sh
 
 # ========================
+# Pyenv Configuration
+# ========================
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init --path)"
+# eval "$(pyenv init -)"
+
+# ========================
 # External Scripts
 # ========================
 for script in ~/scripts/*.sh; do
@@ -41,7 +49,8 @@ alias ubuntu='docker exec -it ubuntu-lab zsh'
 reload-ubuntu(){
   docker kill ubuntu-lab
   docker rm ubuntu-lab
-  docker run --restart always -d --name ubuntu-lab ubuntu-lab tail -f /dev/null
+  # docker run --restart always -d --name ubuntu-lab ubuntu-lab tail -f /dev/null
+  docker run --restart always -d --name ubuntu-lab -p 2222:22 ubuntu-lab
 }
 
 restart-ubuntu(){
@@ -49,7 +58,8 @@ restart-ubuntu(){
   docker rm ubuntu-lab
   cd ~/.ubuntu
   docker build -t ubuntu-lab .
-  docker run --restart always -d --name ubuntu-lab ubuntu-lab tail -f /dev/null
+  # docker run --restart always -d --name ubuntu-lab ubuntu-lab tail -f /dev/null
+  docker run --restart always -d --name ubuntu-lab -p 2222:22 ubuntu-lab
 }
 # ========================
 # Missing Tools Checker
@@ -95,6 +105,12 @@ check_missing_tools
 # ========================
 # Functions
 # ========================
+
+path() {
+  fp=$1
+  dp=$(pwd)
+  echo "$dp/$fp"
+}
 
 rcode() {
   local entity="folder"
