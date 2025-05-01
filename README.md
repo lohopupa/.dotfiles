@@ -29,6 +29,12 @@ After a fresh installation, follow this guide to set up NVIDIA drivers on Arch L
    stow .
    ```  
 
+#### To roll plasma configs
+```
+cd ~/.dotfiles
+stow plasma
+```
+
 ---
 
 ### Running Setup Script
