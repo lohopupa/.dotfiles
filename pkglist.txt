@@ -13,3 +13,7 @@ tree
 grc
 docker
 go
+xclip
+bat
+eza
+ripgrep

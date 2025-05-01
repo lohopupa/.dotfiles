@@ -4,25 +4,38 @@
 
 [alias]
     co = checkout
-    drop = !git add . && git reset --hard HEAD
-    
-    c = commit
-    s = status
-    l = log
-    br = branch
-    pl = pull
-    ps = push
-    f = fetch
-    cl = clone
-    ss = stash
-    sp = stash pop
-    sd = stash drop
+    # _log = log --graph --oneline --decorate --all
+    ; drop = !git add . && git reset --hard HEAD
+    ; c = commit
+    ; s = status
+    ; l = log
+    ; br = branch
+    ; pl = pull
+    ; ps = push
+    ; f = fetch
+    ; cl = clone
+    ; ss = stash
+    ; sp = stash pop
+    ; sd = stash drop
+
+[status]
+    branch = true
+    showStash = true
 
 [init]
     defaultBranch = main
-[http "https://gitlab.pararamx.ru"]
-	proxy = socks5h://localhost:8089
-[https "https://gitlab.pararamx.ru"]
-	proxy = socks5h://localhost:8089
 [credential]
 	helper = store
+[push]
+	autoSetupRemote = true
+    default = current
+
+[pull]
+	rebase = false
+
+
+[url "git@gitlab.aic:"]
+    insteadOf = "aic:"
+
+[url "git@gitlab.aic:infrastructure/"]
+    insteadOf = "infra:"

@@ -22,11 +22,11 @@
     "when": "editorTextFocus"
   },
   {
-    "key": "shift+alt+left",
+    "key": "shift+alt+right",
     "command": "workbench.action.increaseViewWidth",
   },
   {
-    "key": "shift+alt+right",
+    "key": "shift+alt+left",
     "command": "workbench.action.decreaseViewWidth",
   },
   {
@@ -66,5 +66,41 @@
       "text": "code ${selectedText}\u000D"
     },
     "when": "editorTextFocus && editorHasSelection"
+  },
+  {
+    "key": "ctrl+tab",
+    "command": "workbench.action.nextEditor"
+  },
+  {
+    "key": "ctrl+shift+tab",
+    "command": "workbench.action.previousEditor"
+  },
+  {
+    "key": "ctrl+pageup",
+    "command": "workbench.action.openNextRecentlyUsedEditor"
+  },
+  {
+    "key": "ctrl+pagedown",
+    "command": "workbench.action.openPreviousRecentlyUsedEditor"
+  },
+  {
+    "key": "alt+right",
+    "command": "workbench.action.navigateForward",
+    "when": "canNavigateForward"
+  },
+  {
+    "key": "alt+left",
+    "command": "workbench.action.navigateBack",
+    "when": "canNavigateBack"
+  },
+  {
+    "key": "ctrl+alt+m",
+    "command": "extension.insertNumbers",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+alt+n",
+    "command": "-extension.insertNumbers",
+    "when": "editorTextFocus"
   }
 ]

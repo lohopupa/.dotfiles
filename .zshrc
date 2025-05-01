@@ -7,6 +7,11 @@ ZSH_THEME="agnoster"
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
 # ========================
+# Secrets
+# ========================
+source ~/.secrets.sh
+
+# ========================
 # Oh-My-Zsh Configuration
 # ========================
 zstyle ':omz:update' mode auto
@@ -22,6 +27,20 @@ source $ZSH/oh-my-zsh.sh
 # eval "$(pyenv init -)"
 
 # ========================
+# Aliases
+# ========================
+alias kat="/usr/bin/cat"
+alias sl=ls
+alias get='wget $(xclip -o)'
+alias rz='source ~/.zshrc && echo ".zsrc reloaded"'
+alias md='mkdir -p'
+alias ff='find . -type f -iname'
+alias grepv='grep -Pn --vimgrep'
+alias vim='nvim'
+alias nano='nvim'
+alias rc='rcode'
+
+# ========================
 # External Scripts
 # ========================
 for script in ~/scripts/*.sh; do
@@ -30,30 +49,19 @@ done
 source ~/.grc.zsh
 
 # ========================
-# Aliases
-# ========================
-alias kat="/usr/bin/cat"
-alias sl=ls
-alias aeza="ssh aeza"
-alias get='wget $(xclip -o)'
-alias rz='source ~/.zshrc && echo ".zsrc reloaded"'
-alias md='mkdir -p'
-alias ff='find . -type f -iname'
-alias grepv='grep -Pn --vimgrep'
-# ========================
 # Ubuntu lab
 # ========================
 
 alias ubuntu='docker exec -it ubuntu-lab zsh'
 
-reload-ubuntu(){
+reload-ubuntu() {
   docker kill ubuntu-lab
   docker rm ubuntu-lab
   # docker run --restart always -d --name ubuntu-lab ubuntu-lab tail -f /dev/null
   docker run --restart always -d --name ubuntu-lab -p 2222:22 ubuntu-lab
 }
 
-restart-ubuntu(){
+restart-ubuntu() {
   docker kill ubuntu-lab
   docker rm ubuntu-lab
   cd ~/.ubuntu
@@ -106,34 +114,100 @@ check_missing_tools
 # Functions
 # ========================
 
+rand-str() {
+  length=${1:-15}
+
+  head /dev/urandom | tr -dc 'A-Za-z0-9' | head -c"$length"
+}
+
+rand-int() {
+  length=${1:-5}
+
+  head /dev/urandom | tr -dc '0-9' | head -c"$length"
+}
+
+tmuks() {
+  tmux_session=$(tmux ls | fzf | cut -d':' -f1)
+  [ -n "$tmux_session" ] && tmux a -t "$tmux_session"
+}
+
 path() {
   fp=$1
   dp=$(pwd)
   echo "$dp/$fp"
 }
 
-rcode() {
-  local entity="folder"
-  while getopts "f" opt; do
-    case $opt in
-      f) entity="file" ;;
-    esac
-  done
+INT_PATH=$HOME/.int
 
-  echo "select value from ItemTable where key like '%recent%';" | 
-    sqlite3 ~/.config/Code/User/globalStorage/state.vscdb | 
-    jq ".entries[] | select(.${entity}Uri != null) | .${entity}Uri" |
-    fzf | xargs -I {} code --${entity}-uri {}
+next-int() {
+  [[ -f "$INT_PATH" ]] || echo 0 > "$INT_PATH"
+  CURRENT=$(<"$INT_PATH")
+  CURRENT=$((CURRENT + 1))
+  echo "$CURRENT" > "$INT_PATH"
+  echo "$CURRENT"
 }
+
+reset-int() {
+  echo 0 > "$INT_PATH"
+}
+
+# Moved to /home/lohopupa/dev/rcode-python/main.py
+#    probably need to add it here?
+
+# rcode() {
+#   local entity="folder"
+#   while getopts "f" opt; do
+#     case $opt in
+#     f) entity="file" ;;
+#     esac
+#   done
+
+#   echo "select value from ItemTable where key like '%recent%';" |
+#     sqlite3 ~/.config/Code/User/globalStorage/state.vscdb |
+#     jq ".entries[] | select(.${entity}Uri != null) | .${entity}Uri" |
+#     fzf | xargs -I {} code --${entity}-uri {}
+# }
+
+
+# md() {
+#   mkdir -p "$@"
+# }
 
 mdc() {
   mkdir $1 && cd $1
 }
 
-scr() {
-  session=$(screen -ls | awk '/\t/ {print $1}' | cut -d '.' -f 2 | fzf --print-query -q "$1" | tail -n 1)
-  [ -n "$session" ] && screen -R "$session"
+git() {
+  case "$1" in
+    log)
+      shift
+      command git log --graph --oneline --decorate --all "$@"
+      ;;
+    commit)
+      case "$2" in
+        bug)
+          shift 2
+          command git commit -m "BUGFIX: $*"
+          ;;
+        ft)
+          shift 2
+          command git commit -m "FEATURE: $*"
+          ;;
+        test)
+          shift 2
+          command git commit -m "TEST CODE: $*"
+          ;;
+        *)
+          command git "$@"
+          ;;
+      esac
+      ;;
+    *)
+      command git "$@"
+      ;;
+  esac
 }
+
 
 
 # ========================
@@ -149,11 +223,5 @@ prompt_dir() {
   fi
   prompt_segment blue $CURRENT_FG "$short_path"
 }
-
-# Pre-command Hook
-precmd() {
-  screen_title="${STY##*.}"
-  if [[ -n "$STY" && "$PROMPT" != *"[$screen_title]"* ]]; then
-    PROMPT="%{$fg[blue]%}[$screen_title]%{$reset_color%} $PROMPT"
-  fi
-}
+# setopt prompt_subst
+# PS1='%n@%m $(shrink_path -f)>'

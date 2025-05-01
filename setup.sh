@@ -40,11 +40,26 @@ else
   echo "Oh My Zsh is already installed."
 fi
 
-# Clone dotfiles repository
-echo "Cloning dotfiles repository..."
-if [ ! -d ~/.dotfiles ]; then
-  git clone https://github.com/lohopupa/.dotfiles.git ~/.dotfiles
-else
+# INstalling zsh plugins 
+ZSH_CUSTOM=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}
+PLUGINS_DIR="$ZSH_CUSTOM/plugins"
+PLUGINS=(
+    "zsh-users/zsh-syntax-highlighting"
+    "zsh-users/zsh-autosuggestions"
+    "zsh-users/zsh-completions"
+)
+
+mkdir -p "$PLUGINS_DIR"
+
+for plugin in "${PLUGINS[@]}"; do
+    PLUGIN_NAME=$(basename "$plugin")
+    if [ ! -d "$PLUGINS_DIR/$PLUGIN_NAME" ]; then
+        git clone "https://github.com/$plugin.git" "$PLUGINS_DIR/$PLUGIN_NAME"
+    else
+        echo "$PLUGIN_NAME already installed. Skipping."
+    fi
+done
+t_classification
   echo "Dotfiles repository already exists. Pulling latest changes..."
   cd ~/.dotfiles && git pull && cd -
 fi

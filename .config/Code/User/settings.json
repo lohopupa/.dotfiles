@@ -14,7 +14,6 @@
     "editor.tabCompletion": "on",
     "workbench.editor.pinnedTabSizing": "compact",
     "workbench.editor.tabSizing": "shrink",
-    "window.customTitleBarVisibility": "auto",
     "workbench.layoutControl.enabled": false,
     "window.commandCenter": false,
     "csharp.experimental.debug.hotReload": true,
@@ -26,12 +25,12 @@
     ],
     "python.createEnvironment.trigger": "off",
     "[python]": {
-        "editor.defaultFormatter": "ms-python.black-formatter"
+        "editor.defaultFormatter": "ms-python.black-formatter",
+
     },
     "markdown-preview-enhanced.enablePreviewZenMode": true,
     "markdown-preview-enhanced.previewTheme": "one-dark.css",
     "markdown-preview-enhanced.codeBlockTheme": "github-dark.css",
-    "window.menuBarVisibility": "toggle",
     "editor.cursorSurroundingLines": 5,
     "platformio-ide.autoOpenPlatformIOIniFile": false,
     "auto-build.defaultEnv.name": "STM32F103RE_creality",
@@ -49,14 +48,11 @@
         "*.sdb": "${capture}.${extname}-*",
         "*.s3db": "${capture}.${extname}-*"
     },
-    "terminal.integrated.fontLigatures": true,
+    
+    "terminal.integrated.fontLigatures.enabled": true,
     "groupImports.onSave": false,
-    "find-it-faster.general.useTerminalInEditor": false,
-    "workbench.colorTheme": "Ayu Mirage Bordered",
     "workbench.editor.editorActionsLocation": "hidden",
     "problems.autoReveal": false,
-    "terminal.integrated.gpuAcceleration": "off",
-    "Notes.notesLocation": "/home/lohopupa/.notes",
     "workbench.editor.empty.hint": "hidden",
     "C_Cpp.vcFormat.newLine.beforeElse": false,
     "C_Cpp.vcFormat.newLine.beforeCatch": false,
@@ -65,4 +61,34 @@
     "C_Cpp.vcFormat.newLine.beforeOpenBrace.lambda": "sameLine",
     "C_Cpp.vcFormat.newLine.beforeOpenBrace.namespace": "sameLine",
     "C_Cpp.vcFormat.newLine.beforeOpenBrace.type": "sameLine",
+    "workbench.activityBar.location": "top",
+    "git.blame.editorDecoration.enabled": false,
+    "window.menuBarVisibility": "toggle",
+    "workbench.sideBar.location": "right",
+    "chat.commandCenter.enabled": false,
+    "vscode_custom_css.imports": [
+        "file:///home/lohopupa/.dotfiles/vscode/style.css",
+        "file:///home/lohopupa/.dotfiles/vscode/load.js"
+    ],
+    "redhat.telemetry.enabled": false,
+    "git.blame.statusBarItem.enabled": true,
+    "workbench.colorTheme": "GitHub Dark",
+    "editor.multiCursorModifier": "ctrlCmd",
+    "telemetry.telemetryLevel": "off",
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/node_modules/**": true,
+        "**/dist/**": true,
+        "**/build/**": true
+    },
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": false,
+        "strings": false,
+    },
+    "editor.quickSuggestionsDelay": 10,
+    "workbench.reduceMotion": "on",
+    "gitlab.showPipelineUpdateNotifications": true,
+    "extensions.ignoreRecommendations": true,
+
 }

@@ -1,0 +1,1 @@
+// document.getElementsByClassName("composite title").forEach(el => el.remove())

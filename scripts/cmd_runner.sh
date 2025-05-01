@@ -1,3 +1,6 @@
+# TODO: rewrite in go
+# TODO: add export bash function 
+
 [[ -z "$CMD_RUNNER_DATA" ]] && CMD_RUNNER_DATA=~/.cmd_runner_data.db
 
 # Initialize the database if it doesn't exist
