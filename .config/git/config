@@ -33,6 +33,8 @@
 [pull]
 	rebase = false
 
+[url "git@github.com:lohopupa/"]
+    insteadOf = "lohopupa:"
 
 [url "git@gitlab.aic:"]
     insteadOf = "aic:"
