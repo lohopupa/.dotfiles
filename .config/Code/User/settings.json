@@ -63,7 +63,7 @@
     "C_Cpp.vcFormat.newLine.beforeOpenBrace.type": "sameLine",
     "workbench.activityBar.location": "top",
     "git.blame.editorDecoration.enabled": false,
-    "window.menuBarVisibility": "toggle",
+    "window.menuBarVisibility": "compact",
     "workbench.sideBar.location": "right",
     "chat.commandCenter.enabled": false,
     "vscode_custom_css.imports": [
