@@ -187,15 +187,15 @@ git() {
       case "$2" in
         bug)
           shift 2
-          command git bug $*"
+          command git bug "$*"
           ;;
         ft)
           shift 2
-          command git ft $*"
+          command git ft "$*"
           ;;
         test)
           shift 2
-          command git test $*"
+          command git test "$*"
           ;;
         *)
           command git "$@"
