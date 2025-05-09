@@ -39,7 +39,7 @@ alias grepv='grep -Pn --vimgrep'
 alias vim='nvim'
 alias nano='nvim'
 alias rc='rcode'
-
+alias games="sudo grub-reboot 'Windows Boot Manager (on /dev/nvme1n1p1)' && reboot"
 # ========================
 # External Scripts
 # ========================
@@ -181,21 +181,21 @@ git() {
   case "$1" in
     log)
       shift
-      command git log --graph --oneline --decorate --all "$@"
+      command git log --graph --oneline --decorate --all --parents "$@"
       ;;
     commit)
       case "$2" in
         bug)
           shift 2
-          command git commit -m "BUGFIX: $*"
+          command git bug $*"
           ;;
         ft)
           shift 2
-          command git commit -m "FEATURE: $*"
+          command git ft $*"
           ;;
         test)
           shift 2
-          command git commit -m "TEST CODE: $*"
+          command git test $*"
           ;;
         *)
           command git "$@"
