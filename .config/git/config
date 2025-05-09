@@ -4,6 +4,10 @@
 
 [alias]
     co = checkout
+	bug = !~/.config/git/scripts/commit_with_counter.sh bug
+	ft = !~/.config/git/scripts/commit_with_counter.sh feature
+	test = !~/.config/git/scripts/commit_with_counter.sh test
+    
     # _log = log --graph --oneline --decorate --all
     ; drop = !git add . && git reset --hard HEAD
     ; c = commit
