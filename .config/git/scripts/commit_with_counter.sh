@@ -13,6 +13,7 @@ case "$type" in
   feature) prefix="Added feature" ;;
   chore) prefix="Performed chore" ;;
   test) prefix="Testing code" ;;
+  deploy) prefix="DEPLOY" ;;
   *) echo "Unknown type: $type" >&2; exit 1 ;;
 esac
 

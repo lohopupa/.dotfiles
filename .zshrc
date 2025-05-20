@@ -151,6 +151,26 @@ reset-int() {
   echo 0 > "$INT_PATH"
 }
 
+tmuks() {
+  dir_name=$(basename "$PWD")
+  session_name="$dir_name"
+
+  tmux has-session -t "$session_name" 2>/dev/null
+  if [ $? -eq 0 ]; then
+    tmux attach -t "$session_name"
+    return
+  fi
+
+  tmux new-session -d -s "$session_name" -n docker
+  tmux new-window -t "$session_name" -n shell
+
+  [ -d backend ] && tmux new-window -t "$session_name" -n backend -c backend
+
+  tmux select-window -t "$session_name":docker
+  tmux attach -t "$session_name"
+}
+
+
 # Moved to /home/lohopupa/dev/rcode-python/main.py
 #    probably need to add it here?
 
@@ -223,5 +243,3 @@ prompt_dir() {
   fi
   prompt_segment blue $CURRENT_FG "$short_path"
 }
-# setopt prompt_subst
-# PS1='%n@%m $(shrink_path -f)>'

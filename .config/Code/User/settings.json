@@ -26,7 +26,6 @@
     "python.createEnvironment.trigger": "off",
     "[python]": {
         "editor.defaultFormatter": "ms-python.black-formatter",
-
     },
     "markdown-preview-enhanced.enablePreviewZenMode": true,
     "markdown-preview-enhanced.previewTheme": "one-dark.css",
@@ -48,7 +47,6 @@
         "*.sdb": "${capture}.${extname}-*",
         "*.s3db": "${capture}.${extname}-*"
     },
-    
     "terminal.integrated.fontLigatures.enabled": true,
     "groupImports.onSave": false,
     "workbench.editor.editorActionsLocation": "hidden",
@@ -63,7 +61,7 @@
     "C_Cpp.vcFormat.newLine.beforeOpenBrace.type": "sameLine",
     "workbench.activityBar.location": "top",
     "git.blame.editorDecoration.enabled": false,
-    "window.menuBarVisibility": "compact",
+    "window.menuBarVisibility": "toggle",
     "workbench.sideBar.location": "right",
     "chat.commandCenter.enabled": false,
     "vscode_custom_css.imports": [
@@ -90,5 +88,24 @@
     "workbench.reduceMotion": "on",
     "gitlab.showPipelineUpdateNotifications": true,
     "extensions.ignoreRecommendations": true,
-
+    "rest-client.enableTelemetry": false,
+    "git.openRepositoryInParentFolders": "never",
+    "gitlab.duoCodeSuggestions.enabled": false,
+    "gitlab.duoChat.enabled": false,
+    "gitlab.duo.enabledWithoutGitlabProject": false,
+    "gitlab.keybindingHints.enabled": false,
+    "gitlab.duoCodeSuggestions.openTabsContext": false,
+    "gitlab.customQueries": [
+        {
+            "name": "Merge requests",
+            "type": "merge_requests",
+            "scope": "all",
+            "state": "opened",
+            "noItemText": "No merge request in project."
+        }
+    ],
+    "rest-client.decodeEscapedUnicodeCharacters": true,
+    "rest-client.previewResponseInUntitledDocument": true,
+    "rest-client.requestNameAsResponseTabTitle": true,
+    "vscode-postgres.prettyPrintJSONfields": true,
 }

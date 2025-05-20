@@ -28,7 +28,6 @@ After a fresh installation, follow this guide to set up NVIDIA drivers on Arch L
    ```bash
    stow .
    ```  
-
 ---
 
 ### Running Setup Script
