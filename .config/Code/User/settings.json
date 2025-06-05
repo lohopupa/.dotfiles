@@ -108,4 +108,16 @@
     "rest-client.previewResponseInUntitledDocument": true,
     "rest-client.requestNameAsResponseTabTitle": true,
     "vscode-postgres.prettyPrintJSONfields": true,
+    "search.useParentIgnoreFiles": true,
+    "camouflage.appearance.hiddenText": "DONT STREAM SNIPE",
+    "camouflage.enabled": false,
+    "camouflage.files.patterns": [
+        ".env*",
+        "*.env",
+    ],
+    "camouflage.hover.message": "DONT STREAM SNIPE",
+    "camouflage.appearance.style": "dotted",
+    "camouflage.selective.enabled": true,
+    "camouflage.appearance.textColor": "#34393e",
+    "camouflage.appearance.backgroundColor": "#34393e",
 }

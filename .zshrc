@@ -201,7 +201,7 @@ git() {
   case "$1" in
     log)
       shift
-      command git log --graph --oneline --decorate --all --parents "$@"
+      command git log --graph --oneline --decorate --parents "$@"
       ;;
     commit)
       case "$2" in
