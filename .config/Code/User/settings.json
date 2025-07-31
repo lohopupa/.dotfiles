@@ -77,11 +77,12 @@
         "**/.git/objects/**": true,
         "**/node_modules/**": true,
         "**/dist/**": true,
+        "**/.next/**": true,
         "**/build/**": true
     },
     "editor.quickSuggestions": {
         "other": true,
-        "comments": false,
+        "comments": true,
         "strings": false,
     },
     "editor.quickSuggestionsDelay": 10,
@@ -120,4 +121,78 @@
     "camouflage.selective.enabled": true,
     "camouflage.appearance.textColor": "#34393e",
     "camouflage.appearance.backgroundColor": "#34393e",
+    "docker.extension.enableComposeLanguageServer": false,
+    "yaml.schemas": {
+        "/home/lohopupa/.vscode/extensions/continue.continue-1.0.15-linux-x64/config-yaml-schema.json": [
+            ".continue/**/*.yaml"
+        ]
+    },
+    "continue.enableTabAutocomplete": false,
+    "tabnine.experimentalAutoImports": true,
+    "python.venvPath": "/home/lohopupa/.python-envs/default",
+    "better-comments.tags":[
+        {
+            "tag": "!",
+            "color": "#FF2D00",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "?",
+            "color": "#3498DB",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "//",
+            "color": "#474747",
+            "strikethrough": true,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "todo",
+            "color": "#FF8C00",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "*",
+            "color": "#98C379",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "note",
+            "color": "#98D379",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": true
+        },
+                {
+            "tag": "fixme",
+            "color": "#DB3450",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": true,
+            "italic": true
+        },
+    ]
 }
