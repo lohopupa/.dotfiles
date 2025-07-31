@@ -3,11 +3,12 @@
   "IS_MAXIMIZED": true,
   "IS_MINIMIZED": false,
   "WINDOW_BOUNDS": {
-    "x": 461,
-    "y": 0,
-    "width": 1920,
-    "height": 1080
+    "x": 676,
+    "y": 271,
+    "width": 1477,
+    "height": 930
   },
   "BACKGROUND_COLOR": "#121214",
-  "SKIP_HOST_UPDATE": true
+  "SKIP_HOST_UPDATE": true,
+  "offloadAdmControls": false
 }

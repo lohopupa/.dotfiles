@@ -41,14 +41,14 @@ hcd() {
   fi
 }
 
-hc() {
-  local dir
-  if [[ ! -f "$CD_HISTORY_PATH" ]]; then
-    echo "Error: $CD_HISTORY_PATH does not exist."
-    return 1
-  fi
-  dir=$(tac "$CD_HISTORY_PATH" | _ud | _fed | fzf --tmux -q "$1")
-  if [[ -n $dir ]]; then
-    echo "$dir"
-  fi
-}
+# hc() {
+#   local dir
+#   if [[ ! -f "$CD_HISTORY_PATH" ]]; then
+#     echo "Error: $CD_HISTORY_PATH does not exist."
+#     return 1
+#   fi
+#   dir=$(tac "$CD_HISTORY_PATH" | _ud | _fed | fzf --tmux -q "$1")
+#   if [[ -n $dir ]]; then
+#     echo "$dir"
+#   fi
+# }

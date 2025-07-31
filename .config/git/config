@@ -44,3 +44,6 @@
 
 [url "git@gitlab.aic:infrastructure/"]
     insteadOf = "infra:"
+
+[url "lohopupa@toplap:local-git/"]
+    insteadOf = "lg:"

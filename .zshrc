@@ -5,7 +5,6 @@ export ZSH="$HOME/.oh-my-zsh"
 export EDITOR=nvim
 ZSH_THEME="agnoster"
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
-
 # ========================
 # Secrets
 # ========================
@@ -17,8 +16,10 @@ fi
 # ========================
 # Oh-My-Zsh Configuration
 # ========================
+
+# ZSH_AUTOSUGGEST_STRATEGY=(history)
 zstyle ':omz:update' mode auto
-plugins=(zsh-syntax-highlighting zsh-autosuggestions zsh-completions)
+plugins=(zsh-syntax-highlighting zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 
 # ========================
@@ -42,7 +43,11 @@ alias grepv='grep -Pn --vimgrep'
 alias vim='nvim'
 alias nano='nvim'
 alias rc='rcode'
+alias cod='code .'
 alias games="sudo grub-reboot 'Windows Boot Manager (on /dev/nvme1n1p1)' && reboot"
+alias df=duf
+alias sss='/home/lohopupa/dev/cat-ssh/./script.sh'
+
 # ========================
 # External Scripts
 # ========================
@@ -246,3 +251,4 @@ prompt_dir() {
   fi
   prompt_segment blue $CURRENT_FG "$short_path"
 }
+export PATH="$HOME/go/bin:$PATH"
