@@ -48,10 +48,10 @@ alias sss='/home/lohopupa/dev/cat-ssh/./script.sh'
 # ========================
 # External Scripts
 # ========================
+source ~/.grc.zsh
 for script in ~/scripts/*.sh; do
   source "$script"
 done
-source ~/.grc.zsh
 
 # ========================
 # Ubuntu lab

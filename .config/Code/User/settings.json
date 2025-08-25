@@ -48,7 +48,7 @@
         "*.s3db": "${capture}.${extname}-*"
     },
     "terminal.integrated.fontLigatures.enabled": true,
-    "groupImports.onSave": false,
+    "groupImports.onSave": true,
     "workbench.editor.editorActionsLocation": "hidden",
     "problems.autoReveal": false,
     "workbench.editor.empty.hint": "hidden",
@@ -194,5 +194,16 @@
             "bold": true,
             "italic": true
         },
-    ]
+    ],
+    "codeium.enableCommandSideHintEducation": false,
+    "codeium.enableExplainProblem": false,
+    "codeium.enableConfig": {
+        "*": true,
+        "markdown": true,
+        "ignore": true,
+        "postgres": true
+    },
+    "go.addTags": {
+        "promptForTags": true
+    },
 }
