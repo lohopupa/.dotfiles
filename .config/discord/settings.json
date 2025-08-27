@@ -3,10 +3,10 @@
   "IS_MAXIMIZED": false,
   "IS_MINIMIZED": false,
   "WINDOW_BOUNDS": {
-    "x": 0,
-    "y": 37,
-    "width": 2560,
-    "height": 1403
+    "x": 204,
+    "y": 92,
+    "width": 1696,
+    "height": 940
   },
   "BACKGROUND_COLOR": "#121214",
   "SKIP_HOST_UPDATE": true,

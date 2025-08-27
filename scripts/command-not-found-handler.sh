@@ -80,6 +80,6 @@
 # }
 
 
-command_not_found_handler() {
-    echo $1
-}
+# command_not_found_handler() {
+#     echo $1
+# }

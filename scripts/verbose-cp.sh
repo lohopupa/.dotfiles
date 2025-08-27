@@ -5,7 +5,7 @@ cpv() {
     total_files=$(find "$src" -type f | wc -l)
     copied_files=0
 
-    (cp -rv "$src" "$dst" &>/tmp/cp_output &) # Asynchronous copy
+    (cp -rv "$src" "$dst" &>/tmp/cp_output &)
 
     while [ $copied_files -lt $total_files ]; do
         copied_files=$(find "$dst" -type f | wc -l)
@@ -14,6 +14,6 @@ cpv() {
         sleep 0.1
     done
 
-    wait # Wait for the copy process to complete
+    wait
     echo -e "\nCopy complete."
 }

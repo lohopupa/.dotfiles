@@ -130,6 +130,7 @@
     "continue.enableTabAutocomplete": false,
     "tabnine.experimentalAutoImports": true,
     "python.venvPath": "/home/lohopupa/.python-envs/default",
+    "better-comments.multilineComments": true,
     "better-comments.tags":[
         {
             "tag": "!",

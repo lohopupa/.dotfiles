@@ -47,3 +47,5 @@
 
 [url "lohopupa@toplap:local-git/"]
     insteadOf = "lg:"
+[core]
+	excludesfile = /home/lohopupa/.gitignore_global

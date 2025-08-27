@@ -1,6 +1,9 @@
 
 ## README
 
+# TODOs:
+   - [ ] Clean that shit up
+
 # Dotfiles Repository  
 
 This repository contains my personal configuration files managed using [stow](https://www.gnu.org/software/stow/).
