@@ -61,7 +61,6 @@
     "C_Cpp.vcFormat.newLine.beforeOpenBrace.type": "sameLine",
     "workbench.activityBar.location": "top",
     "git.blame.editorDecoration.enabled": false,
-    "window.menuBarVisibility": "toggle",
     "workbench.sideBar.location": "right",
     "chat.commandCenter.enabled": false,
     "vscode_custom_css.imports": [
@@ -206,5 +205,12 @@
     },
     "go.addTags": {
         "promptForTags": true
+    },
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false,
+        "go": false
     },
 }
