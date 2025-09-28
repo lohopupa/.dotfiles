@@ -1,6 +1,6 @@
 {
   "chromiumSwitches": {},
-  "IS_MAXIMIZED": false,
+  "IS_MAXIMIZED": true,
   "IS_MINIMIZED": false,
   "WINDOW_BOUNDS": {
     "x": 204,
@@ -10,5 +10,5 @@
   },
   "BACKGROUND_COLOR": "#121214",
   "SKIP_HOST_UPDATE": true,
-  "offloadAdmControls": false
+  "offloadAdmControls": true
 }

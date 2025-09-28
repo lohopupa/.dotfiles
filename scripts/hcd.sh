@@ -41,6 +41,20 @@ hcd() {
   fi
 }
 
+# hcd() {
+#   local dir
+#   echo "[$(date +%s%3N)] TAC" >&2
+#   tac "$CD_HISTORY_PATH" > /tmp/hcd.1
+#   echo "[$(date +%s%3N)] _ud" >&2
+#   _ud < /tmp/hcd.1 > /tmp/hcd.2
+#   echo "[$(date +%s%3N)] _fed" >&2
+#   _fed < /tmp/hcd.2 > /tmp/hcd.3
+#   echo "[$(date +%s%3N)] FZF" >&2
+#   dir=$(fzf --tmux -q "$1" < /tmp/hcd.3)
+#   echo "[$(date +%s%3N)] END" >&2
+#   [[ -n $dir ]] && cd "$dir"
+# }
+
 # hc() {
 #   local dir
 #   if [[ ! -f "$CD_HISTORY_PATH" ]]; then

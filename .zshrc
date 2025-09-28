@@ -9,9 +9,9 @@ export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 # Secrets
 # ========================
 
-if [ -e "~/.secrets.sh" ]; then
-  source ~/.secrets.sh
-fi
+# if [ -e "~/.secrets.sh" ]; then
+source ~/.secrets.sh
+# fi
 
 # ========================
 # Oh-My-Zsh Configuration
