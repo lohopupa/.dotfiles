@@ -198,7 +198,7 @@
     "codeium.enableCommandSideHintEducation": false,
     "codeium.enableExplainProblem": false,
     "codeium.enableConfig": {
-        "*": true,
+        "*": false,
         "markdown": true,
         "ignore": true,
         "postgres": true
@@ -212,5 +212,19 @@
         "markdown": false,
         "scminput": false,
         "go": false
+    },
+    "[dockercompose]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+        "editor.autoIndent": "advanced",
+        "editor.quickSuggestions": {
+            "other": true,
+            "comments": false,
+            "strings": true
+        },
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "[github-actions-workflow]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
     },
 }

@@ -1,3 +1,7 @@
+a=0
+
+
+
 # ========================
 # Basic Configuration
 # ========================
@@ -12,6 +16,7 @@ export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 # if [ -e "~/.secrets.sh" ]; then
 source ~/.secrets.sh
 # fi
+
 
 # ========================
 # Oh-My-Zsh Configuration
@@ -55,6 +60,8 @@ source ~/.grc.zsh
 for script in ~/scripts/*.sh; do
   source "$script"
 done
+
+
 
 # ========================
 # Ubuntu lab
@@ -252,3 +259,5 @@ prompt_dir() {
   prompt_segment blue $CURRENT_FG "$short_path"
 }
 export PATH="$HOME/go/bin:$PATH"
+
+
