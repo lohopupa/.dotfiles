@@ -8,6 +8,7 @@
 	ft = !~/.config/git/scripts/commit_with_counter.sh feature
 	test = !~/.config/git/scripts/commit_with_counter.sh test
 	deploy = !~/.config/git/scripts/commit_with_counter.sh deploy
+	ci = !~/.config/git/scripts/commit_with_counter.sh ci
     
     # _log = log --graph --oneline --decorate --all
     ; drop = !git add . && git reset --hard HEAD
@@ -45,8 +46,8 @@
 [url "git@gitlab.aic:infrastructure/"]
     insteadOf = "infra:"
 
-[url "lohopupa@toplap:local-git/"]
-    insteadOf = "lg:"
+[url "git@git.lab:"]
+    insteadOf = "homelab"
 [core]
 	excludesfile = /home/lohopupa/.gitignore_global
 [filter "lfs"]

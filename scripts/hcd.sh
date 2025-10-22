@@ -3,6 +3,8 @@
 # Do not overwrite defined path
 [[ -z "$CD_HISTORY_PATH" ]] && CD_HISTORY_PATH=~/.cd_history
 
+pwd >> "$CD_HISTORY_PATH"
+
 cd() {
   builtin cd "$@" && pwd >> "$CD_HISTORY_PATH"
 }

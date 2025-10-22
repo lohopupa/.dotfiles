@@ -15,6 +15,10 @@ docker() {
         command docker compose "$@"
         fi
         ;;
+    pss)
+        shift
+        command docker ps "$@" --format "table {{.ID}}\\t{{.Status}}\\t{{.Names}}\\t{{.Ports}}"
+        ;;
     *)
         command docker "$@"
         ;;

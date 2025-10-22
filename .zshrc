@@ -53,6 +53,8 @@ alias games="sudo grub-reboot 'Windows Boot Manager (on /dev/nvme1n1p1)' && rebo
 alias df=duf
 alias sss='/home/lohopupa/dev/cat-ssh/./script.sh'
 
+DOCKER_PSS=('--format' "table {{.ID}}\\t{{.Status}}\\t{{.Names}}\\t{{.Ports}}")
+
 # ========================
 # External Scripts
 # ========================

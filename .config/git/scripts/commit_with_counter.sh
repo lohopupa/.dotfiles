@@ -14,6 +14,7 @@ case "$type" in
   chore) prefix="Performed chore" ;;
   test) prefix="Testing code" ;;
   deploy) prefix="DEPLOY" ;;
+  ci) prefix="Test CI" ;;
   *) echo "Unknown type: $type" >&2; exit 1 ;;
 esac
 
