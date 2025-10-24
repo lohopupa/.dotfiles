@@ -30,6 +30,7 @@
 
 [init]
     defaultBranch = main
+	# templateDir = /home/lohopupa/.git-precommit
 [credential]
 	helper = store
 [push]
