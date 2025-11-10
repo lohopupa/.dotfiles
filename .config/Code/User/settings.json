@@ -3,7 +3,7 @@
     "files.autoSave": "afterDelay",
     "editor.fontSize": 17,
     "window.zoomLevel": 2,
-    "editor.fontFamily": "JetBrains Mono",
+    "editor.fontFamily": "Jetbrains Mono",
     "editor.fontLigatures": true,
     "workbench.startupEditor": "none",
     "problems.showCurrentInStatus": true,
@@ -69,7 +69,7 @@
     ],
     "redhat.telemetry.enabled": false,
     "git.blame.statusBarItem.enabled": true,
-    "workbench.colorTheme": "GitHub Dark",
+    "workbench.colorTheme": "Bearded Theme Monokai Reversed",
     "editor.multiCursorModifier": "ctrlCmd",
     "telemetry.telemetryLevel": "off",
     "files.watcherExclude": {

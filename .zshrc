@@ -1,7 +1,3 @@
-a=0
-
-
-
 # ========================
 # Basic Configuration
 # ========================
@@ -49,9 +45,11 @@ alias vim='nvim'
 alias nano='nvim'
 alias rc='rcode'
 alias cod='code .'
-alias games="sudo grub-reboot 'Windows Boot Manager (on /dev/nvme1n1p1)' && reboot"
+alias games="sudo efibootmgr -n 0001 && reboot"
+alias bibos="sudo efibootmgr -n 0002 && reboot"
 alias df=duf
 alias sss='/home/lohopupa/dev/cat-ssh/./script.sh'
+alias whatthecommit='git commit -m "$(curl -s https://whatthecommit.com/index.txt)"'
 
 DOCKER_PSS=('--format' "table {{.ID}}\\t{{.Status}}\\t{{.Names}}\\t{{.Ports}}")
 
@@ -213,6 +211,8 @@ tmuks() {
 mdc() {
   mkdir $1 && cd $1
 }
+
+
 
 git() {
   case "$1" in
