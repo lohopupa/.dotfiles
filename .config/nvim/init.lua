@@ -20,37 +20,18 @@ vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+vim.opt.clipboard = "unnamedplus"
 
--- Leader key
+-- Leader key (MUST be before lazy.setup)
 vim.g.mapleader = " "
 
 -- Load plugins
 require("lazy").setup("plugins")
--- Execute line/selection in bash and paste output
-local function execute_in_bash()
-  local lines
-  local mode = vim.fn.mode()
 
-  if mode == "v" or mode == "V" then
-    -- Get visual selection
-    vim.cmd('noau normal! "vy')
-    lines = vim.fn.getreg("v")
-  else
-    -- Get current line
-    lines = vim.api.nvim_get_current_line()
-  end
-
-  -- Execute and capture stdout + stderr
-  local output = vim.fn.system("bash -c " .. vim.fn.shellescape(lines) .. " 2>&1")
-
-  -- Remove trailing newline
-  output = output:gsub("\n$", "")
-
-  -- Paste below current line/selection
-  local current_line = vim.fn.line(".")
-  local output_lines = vim.split(output, "\n")
-  vim.api.nvim_buf_set_lines(0, current_line, current_line, false, output_lines)
-end
-
-vim.keymap.set("n", "<leader>x", execute_in_bash, { desc = "Execute line in bash" })
-vim.keymap.set("v", "<leader>x", execute_in_bash, { desc = "Execute selection in bash" })
+-- Load keymaps after plugins are ready
+vim.api.nvim_create_autocmd("User", {
+  pattern = "VeryLazy",
+  callback = function()
+    require("keymaps").setup()
+  end,
+})
