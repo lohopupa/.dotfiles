@@ -44,13 +44,14 @@ alias grepv='grep -Pn --vimgrep'
 alias vim='nvim'
 alias nano='nvim'
 alias rc='rcode'
-alias cod='code .'
+alias cod='nvim'
+alias code='nvim'
 alias games="sudo efibootmgr -n 0001 && reboot"
 alias bibos="sudo efibootmgr -n 0002 && reboot"
 alias df=duf
 alias sss='/home/lohopupa/dev/cat-ssh/./script.sh'
 alias whatthecommit='git commit -m "$(curl -s https://whatthecommit.com/index.txt)"'
-
+alias flushdns='sudo systemctl restart systemd-resolved'
 DOCKER_PSS=('--format' "table {{.ID}}\\t{{.Status}}\\t{{.Names}}\\t{{.Ports}}")
 
 # ========================
@@ -117,18 +118,24 @@ check_missing_tools() {
 create_alias_if_exists "python" "py" "python"
 create_alias_if_exists "python3" "pyserver" "python3 -m http.server"
 create_alias_if_exists "git" "clone" 'git clone --depth=1 $(xclip -o)'
-create_alias_if_exists "xclip" "copy" 'xclip -selection clipboard'
+create_alias_if_exists "wl-copy" "copy" 'wl-copy'
 create_alias_if_exists "xclip" "past" 'xclip -selection clipboard -o'
 create_alias_if_exists "bat" "cat" "bat"
 create_alias_if_exists "eza" "ls" "eza --color=auto"
 create_alias_if_exists "rg" "grep" "rg --color=auto"
+create_alias_if_exists "dolphin" "explorer" "dolphin"
 
 check_missing_tools
 
 # ========================
 # Functions
 # ========================
-
+aic_proxy() {
+    HTTP_PROXY=10.11.11.1:3127 HTTPS_PROXY=10.11.11.1:3127 "$@"
+}
+proxy() {
+    ALL_PROXY=socks5://git.lab:8888 "$@"
+}
 rand-str() {
   length=${1:-15}
 
@@ -212,7 +219,15 @@ mdc() {
   mkdir $1 && cd $1
 }
 
-
+toggle-vpn() {
+  if sudo systemctl is-active --quiet openvpn-client@ufo.service; then
+    sudo systemctl stop openvpn-client@ufo.service
+    echo "VPN Turned off"
+  else
+    sudo systemctl start openvpn-client@ufo.service
+    echo "VPN Turned on"
+  fi
+}
 
 git() {
   case "$1" in
@@ -245,8 +260,75 @@ git() {
   esac
 }
 
+tgmsg() {
+  local text="$1"
+  if [ -z "$text" ]; then
+    text=$(cat)
+  fi
+  
+  response=$(curl -s -X POST \
+    "https://api.telegram.org/$TG_BOT_TOKEN_HOMELAB/sendMessage" \
+    -d "chat_id=848700511" \
+    -d "text=$text")
+  
+  if echo "$response" | grep -q '"ok":true'; then
+    echo "✓ Message sent"
+  else
+    echo "✗ Error: $response"
+  fi
+}
 
-
+tgfiles() {
+  local files=("$@")
+  
+  if [ ${#files[@]} -eq 0 ]; then
+    echo "✗ No files provided"
+    return 1
+  fi
+  
+  # Check all files exist first
+  for file in "${files[@]}"; do
+    if [ ! -f "$file" ]; then
+      echo "✗ File not found: $file"
+      return 1
+    fi
+  done
+  
+  # Build curl command with all files
+  local curl_cmd=(
+    curl -s -X POST
+    "https://api.telegram.org/$TG_BOT_TOKEN_HOMELAB/sendMediaGroup"
+    -F "chat_id=848700511"
+  )
+  
+  # Add each file
+  local i=0
+  for file in "${files[@]}"; do
+    curl_cmd+=(-F "document_$i=@$file")
+    ((i++))
+  done
+  
+  # Build media JSON
+  local media='['
+  for ((i=0; i<${#files[@]}; i++)); do
+    if [ $i -gt 0 ]; then
+      media="${media},"
+    fi
+    media="${media}{\"type\":\"document\",\"media\":\"attach://document_$i\"}"
+  done
+  media="${media}]"
+  
+  # Add media parameter
+  curl_cmd+=(-F "media=$media")
+  
+  response=$("${curl_cmd[@]}")
+  
+  if echo "$response" | grep -q '"ok":true'; then
+    echo "✓ All files sent in single message"
+  else
+    echo "✗ Error: $response"
+  fi
+}
 # ========================
 # Prompt Customization
 # ========================
@@ -260,6 +342,12 @@ prompt_dir() {
   fi
   prompt_segment blue $CURRENT_FG "$short_path"
 }
-export PATH="$HOME/go/bin:$PATH"
 
+
+export PATH="$HOME/go/bin:$PATH"
+# The next line updates PATH for CLI.
+if [ -f '/home/lohopupa/yandex-cloud/path.bash.inc' ]; then source '/home/lohopupa/yandex-cloud/path.bash.inc'; fi
+
+# The next line enables shell command completion for yc.
+if [ -f '/home/lohopupa/yandex-cloud/completion.zsh.inc' ]; then source '/home/lohopupa/yandex-cloud/completion.zsh.inc'; fi
 

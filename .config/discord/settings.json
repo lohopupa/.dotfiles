@@ -3,13 +3,14 @@
   "IS_MAXIMIZED": false,
   "IS_MINIMIZED": false,
   "WINDOW_BOUNDS": {
-    "x": 983,
-    "y": 277,
-    "width": 940,
-    "height": 596
+    "x": 2582,
+    "y": 22,
+    "width": 2516,
+    "height": 1396
   },
   "BACKGROUND_COLOR": "#121214",
   "SKIP_HOST_UPDATE": true,
   "offloadAdmControls": true,
-  "enableHardwareAcceleration": true
+  "enableHardwareAcceleration": false,
+  "asyncVideoInputDeviceInit": false
 }

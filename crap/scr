@@ -1,0 +1,10 @@
+#!/bin/bash
+
+TEMP_FILE="/tmp/screenshot-$(date +%s).png"
+GEOMETRY=$(slurp)
+
+if [ $? -eq 0 ] && [ -n "$GEOMETRY" ]; then
+    grim -g "$GEOMETRY" "$TEMP_FILE"
+    satty --filename "$TEMP_FILE"
+    rm "$TEMP_FILE"
+fi

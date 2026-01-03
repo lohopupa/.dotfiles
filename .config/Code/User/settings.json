@@ -228,4 +228,7 @@
         "editor.defaultFormatter": "redhat.vscode-yaml"
     },
     "terminal.integrated.stickyScroll.enabled": false,
+    "vscodeGitCommit.variables": {
+        "prefix": "keke"
+    },
 }
